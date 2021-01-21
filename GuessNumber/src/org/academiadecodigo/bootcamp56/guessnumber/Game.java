@@ -11,25 +11,20 @@ public class Game {
     public Game (int number) {
 
         randomSecret = Random.random(number);
+
+        //System.out.println("Random secret: " + randomSecret);
+        //System.out.println("Player 1: " + value1);
+        //System.out.println("Player 2: " + value2);
+
         int value1 = player1.getNumber(number);
-        int value2 = player2.getNumber(number);
-
-        System.out.println("Random secret: " + randomSecret);
-        System.out.println("Player 1: " + value1);
-        System.out.println("Player 2: " + value2);
-
-        while (numberIsCorrect(value1) == false || numberIsCorrect(value2) == false) {
-            if (numberIsCorrect(value1) == true) {
-                System.out.println("Player 1 wins");
-                break;
-            }
-
-            if (numberIsCorrect(value2) == true) {
-                System.out.println("Player 2 wins");
-                break;
-            }
+        if (numberIsCorrect(value1) == true) {
+            System.out.println("Player 1 wins");
         }
-        //else System.out.println("Player 2 wins");
+
+        int value2 = player2.getNumber(number);
+        if (numberIsCorrect(value2) == true) {
+            System.out.println("Player 2 wins");
+        }
 
     }
 
