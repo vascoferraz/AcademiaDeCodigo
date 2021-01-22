@@ -3,9 +3,8 @@ package org.academiadecodigo.bootcamp56.guessnumber;
 public class Random {
 
     public static int random (int max) {
-        int randNum;
-        randNum = (int)Math.ceil(Math.random() * max);
-        //System.out.println(randNum);
+
+        int randNum = (int)Math.ceil(Math.random() * max);
         return randNum;
     }
 

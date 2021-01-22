@@ -12,7 +12,7 @@ public class Game {
 
         randomSecret = Random.random(number);
 
-        System.out.println("Random secret: " + randomSecret);
+        System.out.println("Random secret number: " + randomSecret);
 
         int value1 = 0;
         int value2 = 0;
