@@ -18,5 +18,4 @@ public enum Random {
         return type;
     }
 
-
 }
