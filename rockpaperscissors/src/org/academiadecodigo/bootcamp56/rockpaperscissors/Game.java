@@ -16,6 +16,7 @@ public class Game {
 
         int numberOfWinsPlayer1 = 0;
         int numberOfWinsPlayer2 = 0;
+        int numberOfTies = 0;
 
         Random[] type = Random.values();
 
@@ -92,13 +93,15 @@ public class Game {
                 System.out.println("Tie");
                 System.out.println("-----------------------------");
                 numberOfGames--;
+                numberOfTies++;
                 continue;
             }
 
         }
 
-        System.out.println("Player 1 wins: " + numberOfWinsPlayer1);
-        System.out.println("Player 2 wins: " + numberOfWinsPlayer2);
+        System.out.println("Player 1 total wins:  " + numberOfWinsPlayer1);
+        System.out.println("Player 2 total wins:  " + numberOfWinsPlayer2);
+        System.out.println("Total number of ties: " + numberOfTies);
 
         if (numberOfWinsPlayer1 > numberOfWinsPlayer2) {
             System.out.println("Player 1 is the winner");
@@ -109,7 +112,7 @@ public class Game {
         }
 
         if (numberOfWinsPlayer1 == numberOfWinsPlayer2) {
-            System.out.println("Tie");
+            System.out.println("Tie! No winners!");
         }
 
         System.out.println("-----------------------------");
