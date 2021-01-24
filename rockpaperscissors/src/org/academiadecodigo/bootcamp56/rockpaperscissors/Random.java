@@ -12,10 +12,8 @@ public enum Random {
         this.type = type;
     }
 
-    public static int getType () {
-
-        int type = (int)Math.ceil(Math.random() * 3);
-        return type;
+    public static int getType() {
+        return (int)Math.ceil(Math.random() * 3);
     }
 
 }

@@ -9,10 +9,10 @@ public class Game {
     // PAPER(2),   // Code 2
     // SCISSOR(3); // Code 3
 
-    public Game(int numberOfGames) {
+    public Game (int numberOfGames) {
 
-        int player1Choice = 0;
-        int player2Choice = 0;
+        int player1Choice;
+        int player2Choice;
 
         int numberOfWinsPlayer1 = 0;
         int numberOfWinsPlayer2 = 0;
@@ -117,11 +117,6 @@ public class Game {
 
         System.out.println("-----------------------------");
 
-
-
     }
 
 }
-
-
-

@@ -6,6 +6,5 @@ public class Main {
 
      Game game = new Game(3);
 
-
     }
 }
