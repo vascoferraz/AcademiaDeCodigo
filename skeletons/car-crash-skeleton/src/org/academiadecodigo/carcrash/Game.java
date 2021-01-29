@@ -59,11 +59,15 @@ public class Game {
     }
 
     private void moveAllCars() {
-        //System.out.println("Teste");
+
         for (int i = 0 ; i < cars.length ; i++) {
             cars[i].setPos();
-        }
 
+            if (cars[0].getPos() == cars[1].getPos()) {
+
+                    System.out.println("CRASH!!!!!!!!");
+            }
+        }
 
     }
 

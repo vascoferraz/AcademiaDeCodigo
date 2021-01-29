@@ -10,45 +10,46 @@ public class Position {
         return x;
     }
 
-    public int getRow() {
-        return y;
-    }
+    public int getRow() { return y; }
 
     public void setCol() {
         this.x = nextX();
     }
 
-    public void setRow() {
-        this.y = nextY();
-    }
+    public void setRow() { this.y = nextY(); }
+
 
     public int nextX() {
 
-        if (random == 0) {
-            this.x = this.x+1;
-            System.out.println(this.x);
+        random = (int) (Math.random() * 2);
+
+        if (random == 0 && x < 4) {
+            this.x = x + 1;
+            System.out.println("x: " + this.x);
         }
 
-        if (random == 1) {
-            this.x = this.x-1;
-            System.out.println(this.x);
+        if (random == 1 && x > 1) {
+            this.x = x - 1;
+            System.out.println("x: " + this.x);
         }
-        random = (int) (Math.random() * 2);
+
         return this.x;
     }
 
     public int nextY() {
 
-        if (random == 0) {
-            this.y = this.y+1;
-            System.out.println(this.x);
+        random = (int) (Math.random() * 2);
+
+        if (random == 0 && y < 4) {
+            this.y = y + 1;
+            System.out.println("y: " + this.y);
         }
 
-        if (random == 1) {
-            this.y = this.y-1;
-            System.out.println(this.y);
+        if (random == 1 && y > 1) {
+            this.y = y - 1;
+            System.out.println("y: " + this.y);
         }
-        random = (int) (Math.random() * 2);
+
         return this.y;
     }
 
