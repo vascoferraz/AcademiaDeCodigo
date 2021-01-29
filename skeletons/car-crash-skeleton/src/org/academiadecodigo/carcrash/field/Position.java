@@ -2,8 +2,8 @@ package org.academiadecodigo.carcrash.field;
 
 public class Position {
 
-    private int x = (int) (Math.random() * 100);
-    private int y = (int) (Math.random() * 25);
+    private int x = (int) (Math.random() * Field.getWidth());
+    private int y = (int) (Math.random() * Field.getHeight());
     int random;
 
     public int getCol() {
@@ -23,14 +23,12 @@ public class Position {
 
         random = (int) (Math.random() * 2);
 
-        if (random == 0 && x < 4) {
+        if (random == 0 && x < Field.getWidth()-1) {
             this.x = x + 1;
-            System.out.println("x: " + this.x);
         }
 
         if (random == 1 && x > 1) {
             this.x = x - 1;
-            System.out.println("x: " + this.x);
         }
 
         return this.x;
@@ -40,14 +38,12 @@ public class Position {
 
         random = (int) (Math.random() * 2);
 
-        if (random == 0 && y < 4) {
+        if (random == 0 && y < Field.getHeight()-1) {
             this.y = y + 1;
-            System.out.println("y: " + this.y);
         }
 
         if (random == 1 && y > 1) {
             this.y = y - 1;
-            System.out.println("y: " + this.y);
         }
 
         return this.y;

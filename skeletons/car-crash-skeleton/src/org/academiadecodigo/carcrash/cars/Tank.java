@@ -1,8 +1,8 @@
 package org.academiadecodigo.carcrash.cars;
 
-public class Fiat extends Car {
+public class Tank extends Car {
 
-    public Fiat() {
+    public Tank() {
         super();
     }
 }
