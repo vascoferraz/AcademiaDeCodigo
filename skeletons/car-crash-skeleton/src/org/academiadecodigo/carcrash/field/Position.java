@@ -2,51 +2,50 @@ package org.academiadecodigo.carcrash.field;
 
 public class Position {
 
-    private int x = (int) (Math.random() * Field.getWidth());
-    private int y = (int) (Math.random() * Field.getHeight());
-    int random;
+    private int x;
+    private int y;
 
-    public int getCol() {
-        return x;
+    public Position (int x, int y) {
+        this.x = x;
+        this.y = y;
     }
+
+    private int random = (int) (Math.random() * 2);
+
+    public int getCol() { return x; }
 
     public int getRow() { return y; }
 
-    public void setCol() {
-        this.x = nextX();
+    public void setCol(int speed) { x = nextX(speed); }
+
+    public void setRow(int speed) { y = nextY(speed); }
+
+
+    public int nextX(int speed) {
+
+        // Right
+        if (random == 0 && x < Field.getWidth()-speed) {
+            x = x + speed;
+        }
+
+        // Left
+        if (random == 1 && x > speed-1) {
+            x = x - speed;
+        }
+        return x;
     }
 
-    public void setRow() { this.y = nextY(); }
+    public int nextY(int speed) {
 
-
-    public int nextX() {
-
-        random = (int) (Math.random() * 2);
-
-        if (random == 0 && x < Field.getWidth()-1) {
-            this.x = x + 1;
+        if (random == 0 && y < Field.getHeight()-speed) {
+            y = y + speed;
         }
 
-        if (random == 1 && x > 1) {
-            this.x = x - 1;
+        if (random == 1 && y > speed-1) {
+            y = y - speed;
         }
-
-        return this.x;
-    }
-
-    public int nextY() {
-
-        random = (int) (Math.random() * 2);
-
-        if (random == 0 && y < Field.getHeight()-1) {
-            this.y = y + 1;
-        }
-
-        if (random == 1 && y > 1) {
-            this.y = y - 1;
-        }
-
-        return this.y;
+        else  {random = (int) (Math.random() * 2);}
+        return y;
     }
 
 }

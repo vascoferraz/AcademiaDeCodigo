@@ -1,5 +1,6 @@
 package org.academiadecodigo.carcrash.cars;
 
+import org.academiadecodigo.carcrash.field.Field;
 import org.academiadecodigo.carcrash.field.Position;
 
 abstract public class Car {
@@ -8,13 +9,17 @@ abstract public class Car {
      * The position of the car on the grid
      */
     private Position pos;
+    private int x;
+    private int y;
+
     private boolean stopCar;
+    private int speed;
 
     int randomXY = (int) (Math.random() * 2);
-    int randomNumberOfMoves = (int) (Math.random() * 10);
 
-    public Car() {
-        this.pos = new Position();
+    public Car(int speed) {
+        this.pos = new Position( (int) (Math.random() * Field.getWidth()), (int) (Math.random() * Field.getHeight()) );
+        this.speed = speed;
     }
 
     public Position getPos() {
@@ -23,24 +28,16 @@ abstract public class Car {
 
     public void setPos() {
 
+        randomXY = (int) (Math.random() * 2);
 
-        if (randomXY % 2 == 0 && randomNumberOfMoves > 0) {
-            pos.setCol();
-            randomNumberOfMoves--;
+        if (randomXY % 2 == 0) {
+            pos.setCol(speed);
         }
 
-        if (randomXY % 2 == 1 && randomNumberOfMoves > 0) {
-            pos.setRow();
-            randomNumberOfMoves--;
-            }
-
-        if (randomNumberOfMoves == 0 ) {
-            randomNumberOfMoves = (int) (Math.random() * 20);
-            randomXY = (int) (Math.random() * 2);
+        if (randomXY % 2 == 1) {
+            pos.setRow(speed);
         }
-
-
-}
+    }
 
     public boolean isCrashed() {
         return stopCar;
@@ -49,6 +46,9 @@ abstract public class Car {
     public void stopCar() {
         stopCar = true;
     }
+
+    public int speed() { return speed; }
+
 
     @Override
     public String toString() {

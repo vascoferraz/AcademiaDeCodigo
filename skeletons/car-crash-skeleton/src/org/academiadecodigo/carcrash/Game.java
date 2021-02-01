@@ -2,13 +2,11 @@ package org.academiadecodigo.carcrash;
 
 import org.academiadecodigo.carcrash.cars.Car;
 import org.academiadecodigo.carcrash.cars.CarFactory;
-import org.academiadecodigo.carcrash.cars.Fiat;
 import org.academiadecodigo.carcrash.field.Field;
-import org.academiadecodigo.carcrash.field.Position;
 
 public class Game {
 
-    public static final int MANUFACTURED_CARS = 20;
+    public static final int MANUFACTURED_CARS = 5;
 
     /**
      * Container of Cars
@@ -33,8 +31,10 @@ public class Game {
     public void init() {
 
         cars = new Car[MANUFACTURED_CARS];
-        for (int i = 0; i < cars.length; i++) {
+        for (int i = 0; i < cars.length-1; i++) {
             cars[i] = CarFactory.getNewCar();
+            cars[MANUFACTURED_CARS-2] = CarFactory.getNewTurret();
+            cars[MANUFACTURED_CARS-1] = CarFactory.getNewRocket();
         }
 
         Field.draw(cars);
@@ -80,15 +80,9 @@ public class Game {
                             cars[j].stopCar();
                             cars[k].stopCar();
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
-
 }

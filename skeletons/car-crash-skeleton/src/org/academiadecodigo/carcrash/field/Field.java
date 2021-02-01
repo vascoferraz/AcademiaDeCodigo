@@ -58,9 +58,19 @@ public final class Field {
 
         for (Car c : cars) {
 
-            if (!c.isCrashed()) {
+            if (!c.isCrashed() && (c.speed() == 1 || c.speed() == 2)) {
                 screenWriter.drawString(c.getPos().getCol(), c.getPos().getRow(), c.toString());
-            } else {
+            }
+
+            else if (!c.isCrashed() && c.speed() == 0) {
+                screen.putString(c.getPos().getCol(), c.getPos().getRow(), c.toString(), Terminal.Color.WHITE, Terminal.Color.MAGENTA, ScreenCharacterStyle.Blinking);
+            }
+
+            else if (!c.isCrashed() && c.speed() == 3) {
+                screen.putString(c.getPos().getCol(), c.getPos().getRow(), c.toString(), Terminal.Color.WHITE, Terminal.Color.WHITE, ScreenCharacterStyle.Blinking);
+            }
+
+            else {
                 screen.putString(c.getPos().getCol(), c.getPos().getRow(), c.toString(), Terminal.Color.WHITE, Terminal.Color.RED, ScreenCharacterStyle.Blinking);
             }
 
