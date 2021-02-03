@@ -16,35 +16,36 @@ public class Position {
 
     public int getRow() { return y; }
 
-    public void setCol(int speed) { x = nextX(speed); }
+    public void setCol() { x = nextX(); }
 
-    public void setRow(int speed) { y = nextY(speed); }
+    public void setRow() { y = nextY(); }
 
 
-    public int nextX(int speed) {
+    public int nextX() {
 
         // Right
-        if (random == 0 && x < Field.getWidth()-speed) {
-            x = x + speed;
+        if (random == 0 && x < Field.getWidth()-1) {
+            x = x +1;
         }
 
         // Left
-        if (random == 1 && x > speed-1) {
-            x = x - speed;
+        if (random == 1 && x > 0) {
+            x = x -1;
         }
+        else {random = (int) (Math.random() * 2);}
         return x;
     }
 
-    public int nextY(int speed) {
+    public int nextY() {
 
-        if (random == 0 && y < Field.getHeight()-speed) {
-            y = y + speed;
+        if (random == 0 && y < Field.getHeight()-1) {
+            y = y + 1;
         }
 
-        if (random == 1 && y > speed-1) {
-            y = y - speed;
+        if (random == 1 && y > 0) {
+            y = y - 1;
         }
-        else  {random = (int) (Math.random() * 2);}
+        else {random = (int) (Math.random() * 2);}
         return y;
     }
 

@@ -9,7 +9,7 @@ public class Turret extends Car {
 
     public Turret() {
         super(0);
-        this.pos = new Position(Field.getWidth()/2, Field.getHeight()/2);
+        pos = new Position(Field.getWidth()/2, Field.getHeight()/2);
     }
 
     @Override

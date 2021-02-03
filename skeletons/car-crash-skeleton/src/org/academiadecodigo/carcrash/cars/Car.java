@@ -9,8 +9,7 @@ abstract public class Car {
      * The position of the car on the grid
      */
     private Position pos;
-    private int x;
-    private int y;
+    private int moves;
 
     private boolean stopCar;
     private int speed;
@@ -31,11 +30,11 @@ abstract public class Car {
         randomXY = (int) (Math.random() * 2);
 
         if (randomXY % 2 == 0) {
-            pos.setCol(speed);
+                pos.setCol();
         }
 
         if (randomXY % 2 == 1) {
-            pos.setRow(speed);
+            pos.setRow();
         }
     }
 
