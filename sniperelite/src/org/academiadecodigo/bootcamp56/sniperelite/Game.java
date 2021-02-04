@@ -63,7 +63,7 @@ public class Game {
             switch(randomType){
                 case 0:  gameObjects[i] = new SoldierEnemy(); break;
                 case 1:  gameObjects[i] = new ArmouredEnemy(); break;
-                case 2:  gameObjects[i] = new BarrelType("Plastic"); break;
+                case 2:  gameObjects[i] = new Barrel(); break;
                 default: gameObjects[i] = new Tree(); break;
             }
         }
