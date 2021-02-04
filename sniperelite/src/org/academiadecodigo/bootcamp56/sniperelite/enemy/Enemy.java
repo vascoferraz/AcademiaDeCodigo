@@ -9,11 +9,11 @@ public class Enemy extends GameObject implements Destroyable {
         super();
     }
 
-    public void hit(int i) {
-        int random = (int) (Math.random() * 10);
-        this.health = this.health-random;
-        System.out.println("My current health is: " + health);
+    public void hit(int damage) {
+        this.health = this.health-damage;
+        System.out.println("SolderEnemy health: " + health);
         if (this.health <= 0) {
+            System.out.println("* SoldierEnemy was destroyed *");
             dead = true;
         }
     }
@@ -25,7 +25,6 @@ public class Enemy extends GameObject implements Destroyable {
 
     //@Override
     //public String getMessage () { return "E"; }
-
 
 
 }

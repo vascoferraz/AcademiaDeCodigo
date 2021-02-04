@@ -33,7 +33,7 @@ public class Game {
                     if (randomShoot > 0.3) {
                         System.out.println("Shooting target: " + target);
                         sniperRifle.shoot(target);
-                        target.hit( (int) (Math.random() * 10) );
+                        target.hit( (int) (Math.random() * 70) );
                         shotsFired++;
                     }
                     else {
@@ -45,11 +45,11 @@ public class Game {
 
 
             else {
-                System.out.println("Not a target: Tree");
+                System.out.println("*** Skipping because it is a tree ***");
             }
 
         }
-        System.out.println("Number of shots fired: " + shotsFired);
+        System.out.println("All targets are down! Number of shots fired: " + shotsFired);
 
     }
 
@@ -63,7 +63,7 @@ public class Game {
             switch(randomType){
                 case 0:  gameObjects[i] = new SoldierEnemy(); break;
                 case 1:  gameObjects[i] = new ArmouredEnemy(); break;
-                case 2:  gameObjects[i] = new Barrel(); break;
+                case 2:  gameObjects[i] = new BarrelType("Plastic"); break;
                 default: gameObjects[i] = new Tree(); break;
             }
         }

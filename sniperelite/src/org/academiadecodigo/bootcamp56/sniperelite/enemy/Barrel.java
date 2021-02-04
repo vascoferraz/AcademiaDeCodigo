@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp56.sniperelite.enemy;
 
-public class Barrel extends GameObject implements Destroyable{
+public class Barrel extends GameObject implements Destroyable {
 
     private BarrelType barrelType;
     private int currentStatus= 100;
@@ -9,8 +9,9 @@ public class Barrel extends GameObject implements Destroyable{
     @Override
     public void hit(int damage) {
         this.currentStatus = this.currentStatus-damage;
-        System.out.println("My current health is: " + currentStatus);
+        System.out.println("Barrel status: " + currentStatus);
         if (this.currentStatus <= 0) {
+            System.out.println("* Barrel was destroyed *");
             destroyed = true;
         }
     }
@@ -20,7 +21,6 @@ public class Barrel extends GameObject implements Destroyable{
 
     //@Override
     //public String getMessage() { return "A"; }
-
 
 
 }
