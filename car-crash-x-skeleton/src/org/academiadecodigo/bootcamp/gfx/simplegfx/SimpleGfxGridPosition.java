@@ -25,7 +25,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         super((int) (Math.random() * grid.getCols()), (int) (Math.random() * grid.getRows()), grid);
         this.grid = grid;
         rectangle= new Rectangle( grid.columnToX(this.getCol()) + grid.PADDING, grid.rowToY(this.getRow()) + grid.PADDING, grid.getCellSize(), grid.getCellSize());
-
         show();
         //throw new UnsupportedOperationException();
     }
@@ -40,7 +39,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         super(col, row, grid);
         this.grid = grid;
         rectangle= new Rectangle( grid.columnToX(this.getCol()) + grid.PADDING, grid.rowToY(this.getRow()) + grid.PADDING, grid.getCellSize(), grid.getCellSize());
-
         show();
         //throw new UnsupportedOperationException();
     }
@@ -52,8 +50,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public void show() {
         rectangle.draw();
         rectangle.fill();
-        rectangle.setColor(Color.BLUE);
-
         //throw new UnsupportedOperationException();
     }
 
@@ -72,13 +68,18 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     @Override
     public void moveInDirection(GridDirection direction, int distance) {
 
-        int xx = grid.columnToX(getCol());
-        int yy = grid.rowToY(getRow());
-        super.moveInDirection(direction,distance);
-        int x = grid.columnToX(getCol());
-        int y = grid.rowToY(getRow());
+        //super.moveInDirection(direction,distance);
+        //int x = grid.columnToX(getCol()) - rectangle.getX();
+        //int y = grid.rowToY(getRow()) - rectangle.getY();
+        //super.moveInDirection(direction,distance);
+        //rectangle.translate(x, y);
 
-        rectangle.translate(x-xx, y-yy);
+        int xInital = grid.columnToX(getCol());
+        int yInital = grid.rowToY(getRow());
+        super.moveInDirection(direction,distance);
+        int xFinal = grid.columnToX(getCol());
+        int yFinal = grid.rowToY(getRow());
+        rectangle.translate(xFinal - xInital, yFinal - yInital);
 
         //throw new UnsupportedOperationException();
     }
