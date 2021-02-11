@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 public class Vania implements Iterable<String> {
 
-
     // fields
     private HashMap<String, Integer> map;
     private int counter;
@@ -23,8 +22,7 @@ public class Vania implements Iterable<String> {
             if (!map.containsKey(word)) {
                 map.put(word, 1);
             } else {
-                int other = map.get(arrStr[counter-1]);
-                map.put(word, ++other);
+                map.put(word, map.get(arrStr[counter-1])+1);
             }
         }
     }
