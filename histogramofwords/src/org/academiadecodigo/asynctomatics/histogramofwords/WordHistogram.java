@@ -20,7 +20,7 @@ public class WordHistogram implements Iterable<String>{
 
             else {
                 int next = hashmap.get(splitString[i]);
-                hashmap.put(splitString[i], next+1);
+                hashmap.put(splitString[i], ++next);
             }
         }
     }
@@ -33,7 +33,6 @@ public class WordHistogram implements Iterable<String>{
     public int get (String string) {
         return hashmap.get(string);
     }
-
 
     @Override
     public Iterator iterator() {

@@ -23,6 +23,7 @@ public class WordHistogramH extends HashMap<String, Integer> implements Iterable
         }
     }
 
+
     @Override
     public Iterator iterator() {
         return keySet().iterator();
