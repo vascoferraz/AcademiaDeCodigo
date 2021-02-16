@@ -10,7 +10,6 @@ public class KeyboardListener implements KeyboardHandler {
 
     Paint paint;
 
-
     public void setup(Paint paint) {
 
         this.paint = paint;
@@ -77,18 +76,6 @@ public class KeyboardListener implements KeyboardHandler {
         spaceReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         keyboard.addEventListener(spaceReleased);
 
-        // Event of pressing the Q
-        KeyboardEvent qPressed = new KeyboardEvent();
-        qPressed.setKey(KeyboardEvent.KEY_Q);
-        qPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(qPressed);
-
-        // Event of releasing the Q
-        KeyboardEvent qReleased = new KeyboardEvent();
-        qReleased.setKey(KeyboardEvent.KEY_Q);
-        qReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        keyboard.addEventListener(qReleased);
-
         // Event of pressing the C
         KeyboardEvent cPressed = new KeyboardEvent();
         cPressed.setKey(KeyboardEvent.KEY_C);
@@ -101,6 +88,29 @@ public class KeyboardListener implements KeyboardHandler {
         cReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         keyboard.addEventListener(cReleased);
 
+        // Event of pressing the S
+        KeyboardEvent sPressed = new KeyboardEvent();
+        sPressed.setKey(KeyboardEvent.KEY_S);
+        sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(sPressed);
+
+        // Event of releasing the S
+        KeyboardEvent sReleased = new KeyboardEvent();
+        sReleased.setKey(KeyboardEvent.KEY_S);
+        sReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(sReleased);
+
+        // Event of pressing the Q
+        KeyboardEvent qPressed = new KeyboardEvent();
+        qPressed.setKey(KeyboardEvent.KEY_Q);
+        qPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(qPressed);
+
+        // Event of releasing the Q
+        KeyboardEvent qReleased = new KeyboardEvent();
+        qReleased.setKey(KeyboardEvent.KEY_Q);
+        qReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(qReleased);
 
     }
 
@@ -112,28 +122,30 @@ public class KeyboardListener implements KeyboardHandler {
         if (keyboardEvent.getKey() == 39) { System.out.println("RIGHT KEY : Pressed"); }
         if (keyboardEvent.getKey() == 37) { System.out.println("LEFT KEY  : Pressed"); }
         if (keyboardEvent.getKey() == 32) { System.out.println("SPACE KEY : Pressed"); }
-        if (keyboardEvent.getKey() == 81) { System.out.println("Q KEY     : Pressed"); }
         if (keyboardEvent.getKey() == 67) { System.out.println("C KEY     : Pressed"); }
+        if (keyboardEvent.getKey() == 83) { System.out.println("S KEY     : Pressed"); }
+        if (keyboardEvent.getKey() == 81) { System.out.println("Q KEY     : Pressed"); }
 
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-        if (keyboardEvent.getKey() == 38) { paint.moveUP();    System.out.println("UP KEY    : Released"); }
-        if (keyboardEvent.getKey() == 40) { paint.moveDown();  System.out.println("DOWN KEY  : Released"); }
-        if (keyboardEvent.getKey() == 39) { paint.moveRight(); System.out.println("RIGHT KEY : Released"); }
-        if (keyboardEvent.getKey() == 37) { paint.moveLeft();  System.out.println("LEFT KEY  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP)    { paint.moveUP();    System.out.println("UP KEY    : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN)  { paint.moveDown();  System.out.println("DOWN KEY  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) { paint.moveRight(); System.out.println("RIGHT KEY : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT)  { paint.moveLeft();  System.out.println("LEFT KEY  : Released"); }
 
-        if (keyboardEvent.getKey() == 32) {
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
             System.out.println(paint.returnX() + " | " + paint.returnY());
             paint.paintCells(paint.returnX(), paint.returnY());
             System.out.println("SPACE KEY : Released");
         }
 
-        if (keyboardEvent.getKey() == 67) { paint.deleteAll(); System.out.println("C  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_C) { paint.deleteAll(); System.out.println("C  : Released"); }
 
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) { paint.save(); System.out.println("S  : Released"); }
 
-        if (keyboardEvent.getKey() == 81) { System.exit(0); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_Q) { System.exit(0); }
 
 
     }
