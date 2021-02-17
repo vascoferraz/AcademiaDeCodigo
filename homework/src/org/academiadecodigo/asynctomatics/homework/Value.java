@@ -1,6 +1,6 @@
 package org.academiadecodigo.asynctomatics.homework;
 
-public class Main {
+public class Value {
 
     public static void main(String[] args) {
         Integer num = 10;

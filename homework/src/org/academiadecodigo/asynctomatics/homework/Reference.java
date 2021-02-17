@@ -6,16 +6,16 @@ public class Reference {
         Mutant mutant = new Mutant();
 
         mutant.name = "Magneto";
-        System.out.println("Inside main(): " + mutant.name + mutant);
+        System.out.println("Inside main(): " + mutant.name + " | " + mutant);
 
         transformIntoWolverine(mutant);
-        System.out.println("Inside main(): " + mutant.name + mutant);
+        System.out.println("Inside main(): " + mutant.name + " | " + mutant);
     }
 
         static void transformIntoWolverine(Mutant wolverine) {
-            System.out.println("Inside method() :" + wolverine.name + wolverine);
+            System.out.println("Inside method() :" + wolverine.name + " | " + wolverine);
             wolverine.name = "Wolverine";
-            System.out.println("Inside method() :" + wolverine.name + wolverine);
+            System.out.println("Inside method() :" + wolverine.name + " | " + wolverine);
         }
     }
 
