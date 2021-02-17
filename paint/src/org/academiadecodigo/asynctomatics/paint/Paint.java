@@ -3,7 +3,9 @@ package org.academiadecodigo.asynctomatics.paint;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
 
 public class Paint {
 
@@ -25,8 +27,8 @@ public class Paint {
 
       canvasWidth = 200;
       canvasHeight = 200;
-      x=10;
-      y=10;
+      x = 10;
+      y = 10;
 
       KeyboardListener keyboard = new KeyboardListener();
       keyboard.setup(this);
@@ -36,7 +38,7 @@ public class Paint {
       drawCellsBorders();
 
 
-      cells = new Rectangle(10,10,10,10);
+      cells = new Rectangle(10, 10, 10, 10);
       cells.setColor(Color.RED);
       cells.draw();
 
@@ -50,13 +52,11 @@ public class Paint {
    }
 
 
-
-
    public void drawCellsBorders() {
 
-      for (int i = 1 ; i < 20 ; i++) {
+      for (int i = 1; i < 20; i++) {
 
-         for (int j = 1 ; j < 20 ; j++) {
+         for (int j = 1; j < 20; j++) {
 
             Rectangle cell = new Rectangle(i * 10, j * 10, 20, 20);
             cell.draw();
@@ -66,9 +66,9 @@ public class Paint {
 
    public void initMatrix() {
 
-      for (int i = 0 ; i < 20 ; i++) {
+      for (int i = 0; i < 20; i++) {
 
-         for (int j = 0 ; j < 20 ; j++) {
+         for (int j = 0; j < 20; j++) {
 
             matrix[i][j] = new Rectangle();
             matrix[i][j].setColor(Color.RED);
@@ -85,9 +85,7 @@ public class Paint {
          cells.translate(0, 0);
          System.out.println("X: " + x);
          System.out.println("Y: " + y);
-      }
-
-      else {
+      } else {
          cells.translate(0, -10);
          x = cells.getX();
          y = cells.getY();
@@ -103,9 +101,7 @@ public class Paint {
          cells.translate(0, 0);
          System.out.println("X: " + x);
          System.out.println("Y: " + y);
-      }
-
-      else {
+      } else {
          cells.translate(0, +10);
          x = cells.getX();
          y = cells.getY();
@@ -120,9 +116,7 @@ public class Paint {
          cells.translate(0, 0);
          System.out.println("X: " + x);
          System.out.println("Y: " + y);
-      }
-
-      else {
+      } else {
          cells.translate(-10, 0);
          x = cells.getX();
          y = cells.getY();
@@ -137,9 +131,7 @@ public class Paint {
          cells.translate(0, 0);
          System.out.println("X: " + x);
          System.out.println("Y: " + y);
-      }
-
-      else {
+      } else {
          cells.translate(10, 0);
          x = cells.getX();
          y = cells.getY();
@@ -151,7 +143,7 @@ public class Paint {
 
    public void paintCells(int x, int y) {
 
-      if (isFilled[x-1][y-1] == false) {
+      if (isFilled[x - 1][y - 1] == false) {
          matrix[x - 1][y - 1] = new Rectangle(x * CELLSIZE, y * CELLSIZE, 10, 10);
          matrix[x - 1][y - 1].setColor(Color.RED);
          matrix[x - 1][y - 1].draw();
@@ -160,8 +152,7 @@ public class Paint {
          isFilled[x - 1][y - 1] = true;
          System.out.println(cells.getX());
          System.out.println(cells.getY());
-      }
-      else {
+      } else {
          matrix[x - 1][y - 1].delete();
          isFilled[x - 1][y - 1] = false;
          System.out.println(cells.getX());
@@ -169,37 +160,58 @@ public class Paint {
       }
    }
 
-   public void deleteAll(){
+   public void deleteAll() {
 
-      for (int i = 0 ; i < 20 ; i++) {
+      for (int i = 0; i < 20; i++) {
 
-         for (int j = 0 ; j < 20 ; j++) {
+         for (int j = 0; j < 20; j++) {
 
-           matrix[i][j].delete();
-           isFilled[i][j] = false;
+            matrix[i][j].delete();
+            isFilled[i][j] = false;
             System.out.println(matrix[i][j]);
          }
       }
    }
 
 
-   public int returnX() { return x/CELLSIZE; }
+   public int returnX() {
+      return x / CELLSIZE;
+   }
 
    public int returnY() {
-      return y/CELLSIZE;
+      return y / CELLSIZE;
    }
 
-   public boolean[][] save() {
+   public void save() {
 
-      System.out.println("save");
-      fileSave.fileSave(Arrays.toString(isFilled));
+      String save = "";
+      for (int i = 0; i < 20; i++) {
 
-      return isFilled;
+         for (int j = 0; j < 20; j++) {
+
+            if (isFilled[j][i] == true) {
+               save += "1";
+            } else {
+               save += "0";
+            }
+         }
+         save += "\n";
+      }
+      fileSave.fileSave(save);
    }
 
 
+   public void load() {
 
-
+      String load = null;
+      try {
+         load = fileSave.fileLoad("folder/save.txt", StandardCharsets.UTF_8);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      System.out.println(load);
+      System.out.println(load.length());
+   }
 
 
 }

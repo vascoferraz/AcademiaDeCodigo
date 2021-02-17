@@ -1,12 +1,13 @@
 package org.academiadecodigo.asynctomatics.paint;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileSave {
 
-    private String save;
+    private String save = "";
 
     public void fileSave(String save) {
 
@@ -17,8 +18,15 @@ public class FileSave {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
+
+
+    static String fileLoad(String path, Charset encoding)
+            throws IOException
+    {
+        byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return new String(encoded, encoding);
+    }
+
 
 }
