@@ -1,6 +1,6 @@
 package org.academiadecodigo.asynctomatics.homework;
 
-public class IntegerTest2 {
+public class IntTest {
 
     public static void main(String[] args) {
         MyInt myNumber = new MyInt();
