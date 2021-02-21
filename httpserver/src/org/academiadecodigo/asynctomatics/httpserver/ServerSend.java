@@ -17,23 +17,20 @@ public class ServerSend {
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
         System.out.println(resource);
+        
+        switch (resource) {
+            case "/":
+                new Home(out);
+                break;
 
-        if (resource.equals("/")) {
-           new Home(out);
+            case "/favicon.ico":
+                new FavIco(out);
+                break;
+
+            default:
+                new NoNoNo(out);
+                break;
+
         }
-
-       if (resource.equals("/image")) {
-            new FavIco(out);
-        }
-
-        else {
-            new NoNoNo(out);
-        }
-
     }
 }
-
-
-
-
-
