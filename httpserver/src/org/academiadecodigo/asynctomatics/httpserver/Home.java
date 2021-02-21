@@ -17,6 +17,8 @@ public class Home {
                 "Content-Type: text/html; charset=UTF-8\r\n" +
                 "Content-Length: " + messageLen + "\r\n" +
                 "\r\n" + messageSen);
+
         out.flush();
+        out.close();
     }
 }

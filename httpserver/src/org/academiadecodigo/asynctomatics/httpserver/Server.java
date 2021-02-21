@@ -22,7 +22,6 @@ public class Server {
             socket = listener.accept();
             serverReceive.serverReceivePacket(socket);
             serverSend.serverSendPacket(socket, serverReceive.resource());
-
         }
     }
 }

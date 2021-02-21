@@ -17,7 +17,7 @@ public class ServerSend {
 
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-        System.out.println(resource);
+        System.out.println(resource + " | in ServerSend");
 
         switch (resource) {
             case "/":
@@ -25,7 +25,11 @@ public class ServerSend {
                 break;
 
             case "/favicon.ico":
-                new FavIco(socket);
+                new FavIco(out, socket);
+                break;
+
+            case "/rurounikenshin.png":
+                new Test(out);
                 break;
 
             default:

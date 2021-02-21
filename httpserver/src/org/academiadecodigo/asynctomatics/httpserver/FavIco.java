@@ -5,10 +5,12 @@ import java.net.Socket;
 
 public class FavIco {
 
+    private PrintWriter out;
     private Socket socket;
 
-    public FavIco(Socket socket) throws IOException {
+    public FavIco(PrintWriter out, Socket socket) throws IOException {
 
+        this.out = out;
         this.socket = socket;
 
         BufferedOutputStream favicon = new BufferedOutputStream(socket.getOutputStream());
@@ -20,9 +22,10 @@ public class FavIco {
         while ((c = infile.read()) != -1) {
             favicon.write(c);
         }
+
         infile.close();
         favicon.flush();
         favicon.close();
-
+        out.flush();
     }
 }

@@ -33,6 +33,10 @@ public class ServerReceive {
         resource = request.toString().split(" ")[1];
         protocol = request.toString().split(" ")[2];
         protocol = protocol.split("\n")[0];
+
+        System.out.println(verb);
+        System.out.println(resource);
+        System.out.println(protocol);
     }
 
     public String verb() {
@@ -40,7 +44,6 @@ public class ServerReceive {
     }
 
     public String resource() {
-        System.out.println(resource);
         return resource;
     }
 
