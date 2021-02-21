@@ -1,27 +1,28 @@
 package org.academiadecodigo.asynctomatics.httpserver;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.*;
+import java.net.Socket;
 
 public class FavIco {
 
-    private PrintWriter out;
+    private Socket socket;
 
-    public FavIco(PrintWriter out) throws IOException {
+    public FavIco(Socket socket) throws IOException {
 
-        this.out = out;
+        this.socket = socket;
 
-        File image = new File("/resources/favicon.ico");
-        int imageLen = (int) image.length();
+        BufferedOutputStream favicon = new BufferedOutputStream(socket.getOutputStream());
 
+        File inputFile = new File("resources/favicon.ico");
+        FileInputStream infile = new FileInputStream(inputFile);
 
-        out.println("HTTP/1.0 200 Document Follows\r\n" +
-                "Content-Type: image/ico \r\n" +
-                "Content-Length: " + imageLen + "\r\n" +
-                "\r\n" + image);
-        out.flush();
+        int c;
+        while ((c = infile.read()) != -1) {
+            favicon.write(c);
+        }
+        infile.close();
+        favicon.flush();
+        favicon.close();
+
     }
 }

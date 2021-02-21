@@ -1,5 +1,6 @@
 package org.academiadecodigo.asynctomatics.httpserver;
 
+import java.awt.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -17,14 +18,14 @@ public class ServerSend {
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
         System.out.println(resource);
-        
+
         switch (resource) {
             case "/":
                 new Home(out);
                 break;
 
             case "/favicon.ico":
-                new FavIco(out);
+                new FavIco(socket);
                 break;
 
             default:
