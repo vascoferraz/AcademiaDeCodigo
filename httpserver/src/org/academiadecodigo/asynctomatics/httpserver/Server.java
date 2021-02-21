@@ -12,7 +12,6 @@ public class Server {
     public Server(int port) throws IOException {
 
         this.port = 10201;
-        String message = "";
 
         ServerSocket listener = new ServerSocket(port);
         ServerReceive serverReceive = new ServerReceive();
@@ -22,7 +21,7 @@ public class Server {
 
             socket = listener.accept();
             serverReceive.serverReceivePacket(socket);
-            serverSend.serverSendPacket(socket);
+            serverSend.serverSendPacket(socket, serverReceive.resource());
 
         }
     }

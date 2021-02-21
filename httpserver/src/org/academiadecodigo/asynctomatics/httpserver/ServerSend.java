@@ -7,18 +7,33 @@ import java.net.Socket;
 public class ServerSend {
 
     private Socket socket;
+    private String resource;
 
-
-    public void serverSendPacket(Socket socket) throws IOException {
+    public void serverSendPacket(Socket socket, String resource) throws IOException {
 
         this.socket = socket;
-        String messageSen = "<h1>Nice :)</h1>";
-        int messageLen = messageSen.length();
+        this.resource = resource;
 
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        out.println("HTTP/1.0 200 Document Follows\r\n" +
-                "Content-Type: text/html; charset=UTF-8\r\n" +
-                "Content-Length: " + messageLen + "\r\n" +
-                "\r\n" + messageSen);
+
+        System.out.println(resource);
+
+        if (resource.equals("/")) {
+           new Home(out);
+        }
+
+       if (resource.equals("/image")) {
+            new FavIco(out);
+        }
+
+        else {
+            new NoNoNo(out);
+        }
+
     }
 }
+
+
+
+
+

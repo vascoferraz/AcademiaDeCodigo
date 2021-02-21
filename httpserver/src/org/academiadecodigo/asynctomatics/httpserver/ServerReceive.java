@@ -9,6 +9,9 @@ public class ServerReceive {
 
     private Socket socket;
 
+    private String verb;
+    private String resource;
+    private String protocol;
 
     public void serverReceivePacket(Socket socket) throws IOException {
         this.socket = socket;
@@ -26,7 +29,21 @@ public class ServerReceive {
             }
         }
 
+        verb = request.toString().split(" ")[0];
+        resource = request.toString().split(" ")[1];
+        protocol = request.toString().split(" ")[2];
+        protocol = protocol.split("\n")[0];
     }
+
+    public String verb() {
+        return verb;
+    }
+
+    public String resource() {
+        System.out.println(resource);
+        return resource;
+    }
+
 
 
 }
