@@ -5,18 +5,22 @@ import java.net.Socket;
 
 public class FavIco {
 
-    private PrintWriter out;
     private Socket socket;
 
-    public FavIco(PrintWriter out, Socket socket) throws IOException {
+    public FavIco(Socket socket) throws IOException {
 
-        this.out = out;
         this.socket = socket;
 
-        BufferedOutputStream favicon = new BufferedOutputStream(socket.getOutputStream());
+        DataOutputStream favicon = new DataOutputStream(socket.getOutputStream());
 
         File inputFile = new File("resources/favicon.ico");
         FileInputStream infile = new FileInputStream(inputFile);
+
+        favicon.write(("HTTP/1.0 200 Document Follows\r\n").getBytes() );
+        favicon.write(("Content-Type: image/ico\r\n").getBytes() );
+        favicon.write(("Content-Length:").getBytes() );
+        favicon.write((infile.toString().getBytes()));
+        favicon.write(("\r\n\r\n").getBytes() );
 
         int c;
         while ((c = infile.read()) != -1) {
@@ -26,6 +30,5 @@ public class FavIco {
         infile.close();
         favicon.flush();
         favicon.close();
-        out.flush();
     }
 }

@@ -25,7 +25,7 @@ public class ServerSend {
                 break;
 
             case "/favicon.ico":
-                new FavIco(out, socket);
+                new FavIco(socket);
                 break;
 
             case "/rurounikenshin.png":
