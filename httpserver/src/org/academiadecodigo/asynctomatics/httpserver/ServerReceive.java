@@ -29,10 +29,11 @@ public class ServerReceive {
             }
         }
 
-        verb = request.toString().split(" ")[0];
-        resource = request.toString().split(" ")[1];
-        protocol = request.toString().split(" ")[2];
-        protocol = protocol.split("\n")[0];
+        String requestString = request.toString().split("\n")[0];
+        System.out.println(requestString);
+        verb = requestString.split(" ")[0];
+        resource = requestString.split( " " )[1];
+        protocol = requestString.split(" ")[2];
 
         System.out.println(verb);
         System.out.println(resource);
