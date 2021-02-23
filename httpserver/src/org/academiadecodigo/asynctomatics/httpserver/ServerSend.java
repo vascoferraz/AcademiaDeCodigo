@@ -28,8 +28,8 @@ public class ServerSend {
                 new FavIco(socket);
                 break;
 
-            case "/rurounikenshin.png":
-                new Test(out);
+            case "/index.html":
+                new Test(socket);
                 break;
 
             default:

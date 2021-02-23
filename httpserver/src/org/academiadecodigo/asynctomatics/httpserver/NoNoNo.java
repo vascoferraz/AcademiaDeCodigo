@@ -1,6 +1,7 @@
 package org.academiadecodigo.asynctomatics.httpserver;
 
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.Socket;
 
 public class NoNoNo {
 

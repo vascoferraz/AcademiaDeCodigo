@@ -1,24 +1,34 @@
 package org.academiadecodigo.asynctomatics.httpserver;
 
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.Socket;
 
 public class Test {
 
-    private PrintWriter out;
+    private Socket socket;
 
-    public Test(PrintWriter out) {
+    public Test (Socket socket) throws IOException {
 
-        this.out = out;
+        this.socket = socket;
 
-        String messageSen = "<img src=\"img src=\"resources/rurounikenshin.png\" alt=\"Rurouni Kenshin\" width=\"460\" height=\"345\">";
-        int messageLen = messageSen.getBytes().length;
+        DataOutputStream test = new DataOutputStream(socket.getOutputStream());
 
-        out.println("HTTP/1.0 200 Document Follows\r\n" +
-                "Content-Type: image/png \r\n" +
-                "Content-Length: " + messageLen + "\r\n" +
-                "\r\n" + messageSen);
+        File inputFile = new File("resources/index.html");
+        FileInputStream infile = new FileInputStream(inputFile);
 
-        out.flush();
-        out.close();
+        test.write(("HTTP/1.0 200 Document Follows\r\n").getBytes() );
+        test.write(("Content-Type: text/html; charset=UTF-8\r\n").getBytes() );
+        test.write(("Content-Length:").getBytes() );
+        test.write((infile.toString().getBytes()));
+        test.write(("\r\n\r\n").getBytes() );
+
+        int c;
+        while ((c = infile.read()) != -1) {
+            test.write(c);
+        }
+
+        infile.close();
+        test.flush();
+        test.close();
     }
 }
