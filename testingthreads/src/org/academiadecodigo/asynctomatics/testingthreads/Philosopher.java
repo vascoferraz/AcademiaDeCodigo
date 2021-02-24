@@ -19,7 +19,7 @@ public class Philosopher implements Runnable {
 
         while (true) {
 
-            while (leftFork == true && rightFork == true) {
+            while (leftFork == false && rightFork == false) {
 
                 synchronized (leftFork) {
                     {
