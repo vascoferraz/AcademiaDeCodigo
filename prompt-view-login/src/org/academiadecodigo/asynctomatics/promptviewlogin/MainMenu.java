@@ -23,18 +23,20 @@ public class MainMenu {
 
         keys = users.keySet();
 
-        if (menu.equals(1)) {
-            register();
-        }
+        switch (menu) {
 
-        if (menu.equals(2)) {
-            login();
-        }
+            case 1:
+                register();
+                break;
 
-        if (menu.equals(3)) {
-            listUsers();
-        }
+            case 2:
+                login();
+                break;
 
+            case 3:
+                listUsers();
+                break;
+        }
     }
 
     public void register() {
@@ -47,6 +49,7 @@ public class MainMenu {
 
         String name = prompt.getUserInput(question1);
         String password = prompt.getUserInput(question2);
+        //String passwordHash;
 
         users.put(name, password);
     }
@@ -75,7 +78,8 @@ public class MainMenu {
             if (key.equals(name) && !users.get(key).equals(password)) {
                 System.out.println("Wrong password");
                 return;
-            } else {
+            }
+            else {
                 System.out.println("Logged in");
                 return;
             }
@@ -94,13 +98,3 @@ public class MainMenu {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
