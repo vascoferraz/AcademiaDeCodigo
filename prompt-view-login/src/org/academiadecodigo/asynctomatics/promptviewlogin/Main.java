@@ -5,7 +5,6 @@ import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 
 import java.util.HashMap;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -25,8 +24,6 @@ public class Main {
 
             MainMenu mainMenu = new MainMenu(prompt, users, answerIndex);
         }
-
     }
-
 }
 

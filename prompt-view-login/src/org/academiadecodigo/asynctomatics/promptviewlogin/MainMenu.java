@@ -1,7 +1,6 @@
 package org.academiadecodigo.asynctomatics.promptviewlogin;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.PasswordInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 
@@ -21,7 +20,6 @@ public class MainMenu {
         this.prompt = prompt;
         this.users = users;
         this.menu = menu;
-
 
         keys = users.keySet();
 
