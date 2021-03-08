@@ -9,7 +9,7 @@ public class Main {
 
         System.out.println(machine.compute(6, 6, (n1, n2) -> n1 + n1));
 
-        System.out.println(machine.compute("Hello", "World", (n1, n2) -> n1 + n1));
+        System.out.println(machine.compute("Hello ", "World", (n1, n2) -> n1 + n2));
 
     }
 }
