@@ -1,4 +1,4 @@
-public interface MonoOperation <T>  {
+public interface MonoOperation <T> {
 
     T compute (T variable1);
 }
