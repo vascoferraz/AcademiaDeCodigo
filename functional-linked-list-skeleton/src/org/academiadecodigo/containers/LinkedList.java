@@ -132,7 +132,14 @@ public class LinkedList<T> implements Iterable<T> {
      */
     public <R> LinkedList<R> map(Function<T, R> mapper) {
 
-        throw  new UnsupportedOperationException();
+        LinkedList newList = new LinkedList();
+
+        for (T t : this) {
+            newList.add(mapper.apply(t));
+        }
+
+        return newList;
+
     }
 
     /**
@@ -143,7 +150,16 @@ public class LinkedList<T> implements Iterable<T> {
      */
     public LinkedList<T> filter(Predicate<T> predicate) {
 
-        throw  new UnsupportedOperationException();
+        LinkedList newList = new LinkedList();
+
+        for (T t : this) {
+
+            if (predicate.test(t)) {
+                newList.add(t);
+            }
+        }
+        return newList;
+
     }
 
     /**
@@ -155,7 +171,10 @@ public class LinkedList<T> implements Iterable<T> {
      */
     public T reduce(BinaryOperator<T> reducer, T accumulator) {
 
-        throw  new UnsupportedOperationException();
+        for (T t : this) {
+            accumulator = reducer.apply(accumulator, t);
+        }
+        return accumulator;
     }
 
     /**
@@ -166,7 +185,12 @@ public class LinkedList<T> implements Iterable<T> {
      */
     public boolean anyMatch(Predicate<T> predicate) {
 
-        throw  new UnsupportedOperationException();
+        for (T t : this)
+            if (predicate.test(t)) {
+                return true;
+            }
+            return false;
+
     }
 
     /**
@@ -177,8 +201,14 @@ public class LinkedList<T> implements Iterable<T> {
      */
     public boolean allMatch(Predicate<T> predicate) {
 
-        throw  new UnsupportedOperationException();
+        for (T t : this)
+            if (!predicate.test(t)) {
+                return false;
+            }
+        return true;
+
     }
+
 
     @Override
     public Iterator<T> iterator() {
