@@ -1,11 +1,11 @@
-package org.academiadecodigo.asynctomatics.paint;
+package org.academiadecodigo.asynctomatics.mapeditor;
 
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
 
-        Paint paint = new Paint();
+        MapEditor mapEditor = new MapEditor();
     }
 
 

@@ -1,4 +1,4 @@
-package org.academiadecodigo.asynctomatics.paint;
+package org.academiadecodigo.asynctomatics.mapeditor;
 
 import java.io.*;
 import java.nio.charset.Charset;

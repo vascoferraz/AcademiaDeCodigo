@@ -1,4 +1,4 @@
-package org.academiadecodigo.asynctomatics.paint;
+package org.academiadecodigo.asynctomatics.mapeditor;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 
-public class Paint {
+public class MapEditor {
 
    private Rectangle canvas;
    private Rectangle cells;
@@ -23,7 +23,7 @@ public class Paint {
    private FileSave fileSave;
 
 
-   public Paint() {
+   public MapEditor() {
 
       canvasWidth = 200;
       canvasHeight = 200;

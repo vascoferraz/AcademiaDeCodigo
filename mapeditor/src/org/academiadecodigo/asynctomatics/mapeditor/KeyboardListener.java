@@ -1,4 +1,4 @@
-package org.academiadecodigo.asynctomatics.paint;
+package org.academiadecodigo.asynctomatics.mapeditor;
 
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -8,11 +8,11 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class KeyboardListener implements KeyboardHandler {
 
 
-    Paint paint;
+    MapEditor mapEditor;
 
-    public void setup(Paint paint) {
+    public void setup(MapEditor mapEditor) {
 
-        this.paint = paint;
+        this.mapEditor = mapEditor;
 
         Keyboard keyboard = new Keyboard(this);
 
@@ -143,22 +143,22 @@ public class KeyboardListener implements KeyboardHandler {
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP)    { paint.moveUP();    System.out.println("UP KEY    : Released"); }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN)  { paint.moveDown();  System.out.println("DOWN KEY  : Released"); }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) { paint.moveRight(); System.out.println("RIGHT KEY : Released"); }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT)  { paint.moveLeft();  System.out.println("LEFT KEY  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP)    { mapEditor.moveUP();    System.out.println("UP KEY    : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN)  { mapEditor.moveDown();  System.out.println("DOWN KEY  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT) { mapEditor.moveRight(); System.out.println("RIGHT KEY : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT)  { mapEditor.moveLeft();  System.out.println("LEFT KEY  : Released"); }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-            System.out.println(paint.returnX() + " | " + paint.returnY());
-            paint.paintCells(paint.returnX(), paint.returnY());
+            System.out.println(mapEditor.returnX() + " | " + mapEditor.returnY());
+            mapEditor.paintCells(mapEditor.returnX(), mapEditor.returnY());
             System.out.println("SPACE KEY : Released");
         }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_C) { paint.deleteAll(); System.out.println("C  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_C) { mapEditor.deleteAll(); System.out.println("C  : Released"); }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) { paint.save(); System.out.println("S  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) { mapEditor.save(); System.out.println("S  : Released"); }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_L) { paint.load(); System.out.println("L  : Released"); }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_L) { mapEditor.load(); System.out.println("L  : Released"); }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_Q) { System.exit(0); }
 
