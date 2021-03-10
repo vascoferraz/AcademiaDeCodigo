@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,15 +13,14 @@ import java.util.stream.Collectors;
 public class FileAnalyzer {
 
     public static void main(String[] args) throws IOException {
-
-        //Stream<String> file1 = Files.lines(Path.of("src/main/resources/file1.txt"));
-        //Stream<String> file2 = Files.lines(Path.of("src/main/resources/file2.txt"));
-
+        
         countTheNumberOfWords("src/main/resources/file1.txt");
-        findTheFirstWordLargerThanNCharacters("src/main/resources/file1.txt", 12);
-        gettingTheLongestNWords("src/main/resources/file1.txt", 5);
+        findTheFirstWordLargerThanNCharacters("src/main/resources/file1.txt", 11);
+        gettingTheLongestNWordsV1("src/main/resources/file1.txt", 5);
+        gettingTheLongestNWordsV2("src/main/resources/file1.txt", 10);
         findingTheCommonWordsBetweenTwoFiles("src/main/resources/file1.txt", "src/main/resources/file2.txt");
     }
+
 
     private static void countTheNumberOfWords(String path) throws IOException {
 
@@ -42,7 +42,7 @@ public class FileAnalyzer {
                         .flatMap(line -> Arrays.stream(line.split("\\s+")))
                         .flatMap(line -> Arrays.stream(line.split(",")))
                         .flatMap(line -> Arrays.stream(line.split("\"")))
-                        .filter(line -> line.length() > n)
+                        .filter(line -> line.length() == n)
                         .collect(Collectors.toList());
 
         System.out.println(word.get(0));
@@ -50,7 +50,7 @@ public class FileAnalyzer {
     }
 
 
-    private static void gettingTheLongestNWords(String path, int n) throws IOException {
+    private static void gettingTheLongestNWordsV1(String path, int n) throws IOException {
 
         List<String> word =
                 Files.lines(Paths.get(path))
@@ -58,6 +58,22 @@ public class FileAnalyzer {
                         .flatMap(line -> Arrays.stream(line.split(",")))
                         .flatMap(line -> Arrays.stream(line.split("\"")))
                         .filter(line -> line.length() == n)
+                        .collect(Collectors.toList());
+
+        System.out.println(word);
+        System.out.println("-----------------------------------");
+    }
+
+
+    private static void gettingTheLongestNWordsV2(String path, int n) throws IOException {
+
+        List<String> word =
+                Files.lines(Paths.get(path))
+                        .flatMap(line -> Arrays.stream(line.split("\\s+")))
+                        .flatMap(line -> Arrays.stream(line.split(",")))
+                        .flatMap(line -> Arrays.stream(line.split("\"")))
+                        .sorted(Comparator.comparing(String::length).reversed())
+                        .limit(n)
                         .collect(Collectors.toList());
 
         System.out.println(word);
