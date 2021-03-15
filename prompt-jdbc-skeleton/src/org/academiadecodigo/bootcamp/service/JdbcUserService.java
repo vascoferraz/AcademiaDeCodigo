@@ -1,0 +1,119 @@
+package org.academiadecodigo.bootcamp.service;
+
+import org.academiadecodigo.bootcamp.model.User;
+import org.academiadecodigo.bootcamp.persistence.ConnectionManager;
+import org.academiadecodigo.bootcamp.utils.Security;
+
+import java.sql.*;
+import java.util.List;
+
+public class JdbcUserService implements UserService {
+
+    private ConnectionManager connectionManager = new ConnectionManager();
+
+    private Connection dbConnection;
+
+    public JdbcUserService() {
+        dbConnection = connectionManager.getConnection();
+    }
+
+
+    @Override
+    public boolean authenticate(String username, String password) {
+
+        String passwordHash = Security.getHash(password);
+
+        String dbUsername;
+        String dbPasswordHash;
+
+        // create a query
+        String query = "SELECT username, password FROM user;";
+        PreparedStatement statement = null;
+
+        try {
+            statement = dbConnection.prepareStatement(query);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            for (int i = 0; i < count(); i++) {
+                
+                if (resultSet.next()) {
+                    dbUsername = resultSet.getString(1);
+                    dbPasswordHash = resultSet.getString(2);
+                    System.out.println(username);
+                    System.out.println(dbUsername);
+                    System.out.println(passwordHash);
+                    System.out.println(dbPasswordHash);
+
+                    if (dbUsername.equals(username) && dbPasswordHash.equals(passwordHash)) {
+                        return true;
+                    }
+                }
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return false;
+    }
+
+    @Override
+    public void add(User user) {
+
+        String query = "INSERT INTO user (username, password, email, firstname, lastname, phone) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement statement = null;
+
+        try {
+            statement = dbConnection.prepareStatement(query);
+            System.out.println(query);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getFirstName());
+            statement.setString(5, user.getLastName());
+            statement.setString(6, user.getPhone());
+            // execute the query
+            statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public User findByName(String username) {
+        return null;
+    }
+
+    @Override
+    public List<User> findAll() {
+        return null;
+    }
+
+    @Override
+    public int count() {
+
+        int result = 0;
+
+        Statement statement = null;
+
+        try {
+            statement = dbConnection.createStatement();
+            String query = "SELECT COUNT(*) FROM user";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if (resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        System.out.println(result);
+        return result;
+
+    }
+}
