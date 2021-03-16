@@ -21,7 +21,7 @@ public class MainController extends AbstractController {
                 break;
             case 3:
                 if (userService instanceof JdbcUserService) {
-                    ((JdbcUserService) userService).close();
+                    ((JdbcUserService) userService).closeConnection();
                     System.out.println("Connection closed");
                 }
                 break;

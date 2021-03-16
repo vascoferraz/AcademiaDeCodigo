@@ -26,7 +26,7 @@ public class JdbcUserService implements UserService {
         String dbPasswordHash;
 
         String query = "SELECT username, password FROM user;";
-        PreparedStatement statement;
+        PreparedStatement statement = null;
 
         try {
             statement = dbConnection.prepareStatement(query);
@@ -48,6 +48,9 @@ public class JdbcUserService implements UserService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        finally {
+            closeQuery(statement);
+        }
 
         return false;
     }
@@ -58,7 +61,7 @@ public class JdbcUserService implements UserService {
         String query = "INSERT INTO user (username, password, email, firstname, lastname, phone) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
-        PreparedStatement statement;
+        PreparedStatement statement = null;
 
         if (findByName(user.getUsername()) == null) {
             try {
@@ -74,6 +77,9 @@ public class JdbcUserService implements UserService {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+            finally {
+                closeQuery(statement);
+            }
         }
     }
 
@@ -82,7 +88,7 @@ public class JdbcUserService implements UserService {
     public User findByName(String username) {
 
         String query = "SELECT username, firstname, phone, email, password, lastname FROM user WHERE username=?";
-        PreparedStatement statement;
+        PreparedStatement statement = null;
         User user = null;
 
         try {
@@ -103,6 +109,9 @@ public class JdbcUserService implements UserService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        finally {
+            closeQuery(statement);
+        }
 
         return user;
 
@@ -111,7 +120,7 @@ public class JdbcUserService implements UserService {
     @Override
     public List<User> findAll() {
 
-        Statement statement;
+        Statement statement = null;
         List list = new LinkedList();
 
         try {
@@ -137,6 +146,9 @@ public class JdbcUserService implements UserService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        finally {
+            closeQuery(statement);
+        }
 
         return list;
     }
@@ -146,7 +158,7 @@ public class JdbcUserService implements UserService {
 
         int result = 0;
 
-        Statement statement;
+        Statement statement = null;
 
         try {
             statement = dbConnection.createStatement();
@@ -160,11 +172,27 @@ public class JdbcUserService implements UserService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        finally {
+            closeQuery(statement);
+        }
 
         return result;
     }
 
-    public void close() {
+    public void closeConnection() {
         connectionManager.close();
     }
+
+
+    public void closeQuery(Statement statement) {
+        
+        if (statement != null) {
+            try {
+                statement.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
 }
