@@ -26,7 +26,7 @@ public class JdbcUserService implements UserService {
         String dbPasswordHash;
 
         String query = "SELECT username, password FROM user;";
-        PreparedStatement statement = null;
+        PreparedStatement statement;
 
         try {
             statement = dbConnection.prepareStatement(query);
@@ -58,7 +58,7 @@ public class JdbcUserService implements UserService {
         String query = "INSERT INTO user (username, password, email, firstname, lastname, phone) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
-        PreparedStatement statement = null;
+        PreparedStatement statement;
 
         if (findByName(user.getUsername()) == null) {
             try {
@@ -82,7 +82,7 @@ public class JdbcUserService implements UserService {
     public User findByName(String username) {
 
         String query = "SELECT username, firstname, phone, email, password, lastname FROM user WHERE username=?";
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         User user = null;
 
         try {
@@ -111,7 +111,7 @@ public class JdbcUserService implements UserService {
     @Override
     public List<User> findAll() {
 
-        Statement statement = null;
+        Statement statement;
         List list = new LinkedList();
 
         try {
@@ -146,7 +146,7 @@ public class JdbcUserService implements UserService {
 
         int result = 0;
 
-        Statement statement = null;
+        Statement statement;
 
         try {
             statement = dbConnection.createStatement();
@@ -161,8 +161,6 @@ public class JdbcUserService implements UserService {
             throwables.printStackTrace();
         }
 
-        //System.out.println(result);
         return result;
-
     }
 }
