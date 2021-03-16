@@ -31,3 +31,5 @@ target/
 
 # Exceptions
 !simplegraphics.jar
+!prompt-view-0.2.1-SNAPSHOT.jar
+!mysql-connector-java-8.0.22.jar
