@@ -163,4 +163,8 @@ public class JdbcUserService implements UserService {
 
         return result;
     }
+
+    public void close() {
+        connectionManager.close();
+    }
 }

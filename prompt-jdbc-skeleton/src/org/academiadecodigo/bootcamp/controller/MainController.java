@@ -1,6 +1,8 @@
 package org.academiadecodigo.bootcamp.controller;
 
 
+import org.academiadecodigo.bootcamp.service.JdbcUserService;
+
 public class MainController extends AbstractController {
 
     private Controller userListController;
@@ -18,6 +20,10 @@ public class MainController extends AbstractController {
                 init();
                 break;
             case 3:
+                if (userService instanceof JdbcUserService) {
+                    ((JdbcUserService) userService).close();
+                    System.out.println("Connection closed");
+                }
                 break;
         }
     }

@@ -50,6 +50,7 @@ public class App {
         mainController.setView(mainView);
         mainController.setUserListController(userListController);
         mainController.setUserDetailsController(userDetailsController);
+        mainController.setUserService(userService);
 
         // Wire userList controller and view
         userListView.setPrompt(prompt);
