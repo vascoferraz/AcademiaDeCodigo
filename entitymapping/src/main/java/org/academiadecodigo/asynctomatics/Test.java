@@ -20,7 +20,7 @@ public class Test {
         Test test = new Test();
 
         User user1 = new User();
-        //user1.setId(1);
+        user1.setId(1);
         user1.setName("Vasco");
         user1.setEmail("vasco@vasco.com");
         user1.setPhone(912345678);
@@ -32,7 +32,7 @@ public class Test {
         System.out.println(test.fetch(user1.getId()));
 
         User user2 = new User();
-        //user2.setId(2);
+        user2.setId(2);
         user2.setName("Marlene");
         user2.setEmail("marlene@marlene.com");
         user2.setPhone(912345678);
@@ -45,7 +45,7 @@ public class Test {
 
 
         user2 = new User();
-        //user2.setId(2);
+        user2.setId(2);
         user2.setName("Marlene2");
         user2.setEmail("marlene@marlene.com");
         user2.setPhone(912345678);
