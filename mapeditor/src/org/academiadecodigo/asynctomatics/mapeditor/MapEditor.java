@@ -47,8 +47,6 @@ public class MapEditor {
       matrix = new Rectangle[20][20];
       isFilled = new boolean[20][20];
       initMatrix();
-
-
    }
 
 
@@ -63,6 +61,7 @@ public class MapEditor {
          }
       }
    }
+
 
    public void initMatrix() {
 
@@ -91,9 +90,9 @@ public class MapEditor {
          y = cells.getY();
          System.out.println("X: " + x);
          System.out.println("Y: " + y);
-
       }
    }
+
 
    public void moveDown() {
 
@@ -110,6 +109,7 @@ public class MapEditor {
       }
    }
 
+
    public void moveLeft() {
 
       if (cells.getX() == 10) {
@@ -124,6 +124,7 @@ public class MapEditor {
          System.out.println("Y: " + y);
       }
    }
+
 
    public void moveRight() {
 
@@ -173,7 +174,6 @@ public class MapEditor {
       }
    }
 
-
    public int returnX() {
       return x / CELLSIZE;
    }
@@ -181,6 +181,7 @@ public class MapEditor {
    public int returnY() {
       return y / CELLSIZE;
    }
+
 
    public void save() {
 
@@ -212,10 +213,4 @@ public class MapEditor {
       System.out.println(load);
       System.out.println(load.length());
    }
-
-
 }
-
-
-
-
