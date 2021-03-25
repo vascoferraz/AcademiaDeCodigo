@@ -210,7 +210,23 @@ public class MapEditor {
       } catch (IOException e) {
          e.printStackTrace();
       }
-      System.out.println(load);
-      System.out.println(load.length());
+
+      if (load.charAt(0) == '1') {
+         System.out.println(load.charAt(0));
+         matrix[0][0] = new Rectangle(1 * CELLSIZE, 1 * CELLSIZE, 10, 10);
+         matrix[0][0].setColor(Color.RED);
+         matrix[0][0].draw();
+         matrix[0][0].setColor(Color.GREEN);
+         matrix[0][0].fill();
+         isFilled[0][0] = true;
+      }
+
+      else {
+         matrix[0][0].delete();
+         isFilled[0][0] = false;
+      }
    }
+
+
+
 }
