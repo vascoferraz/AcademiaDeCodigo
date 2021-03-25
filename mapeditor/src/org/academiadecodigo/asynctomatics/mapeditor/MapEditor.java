@@ -211,19 +211,20 @@ public class MapEditor {
          e.printStackTrace();
       }
 
-      if (load.charAt(0) == '1') {
-         System.out.println(load.charAt(0));
-         matrix[0][0] = new Rectangle(1 * CELLSIZE, 1 * CELLSIZE, 10, 10);
-         matrix[0][0].setColor(Color.RED);
-         matrix[0][0].draw();
-         matrix[0][0].setColor(Color.GREEN);
-         matrix[0][0].fill();
-         isFilled[0][0] = true;
-      }
+      for (int i = 0; i < 20; i++) {
 
-      else {
-         matrix[0][0].delete();
-         isFilled[0][0] = false;
+         if (load.charAt(i) == '1') {
+            System.out.println(load.charAt(0));
+            matrix[i][0] = new Rectangle((i + 1) * CELLSIZE, (0 + 1) * CELLSIZE, 10, 10);
+            matrix[i][0].setColor(Color.RED);
+            matrix[i][0].draw();
+            matrix[i][0].setColor(Color.GREEN);
+            matrix[i][0].fill();
+            isFilled[i][0] = true;
+         } else {
+            matrix[i][0].delete();
+            isFilled[i][0] = false;
+         }
       }
    }
 
