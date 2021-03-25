@@ -205,29 +205,32 @@ public class MapEditor {
    public void load() {
 
       String load = null;
+      int counter = 0;
       try {
          load = fileSave.fileLoad("folder/save.txt", StandardCharsets.UTF_8);
       } catch (IOException e) {
          e.printStackTrace();
       }
 
-      for (int i = 0; i < 20; i++) {
+      for (int j = 0; j < 20; j++) {
 
-         if (load.charAt(i) == '1') {
-            System.out.println(load.charAt(0));
-            matrix[i][0] = new Rectangle((i + 1) * CELLSIZE, (0 + 1) * CELLSIZE, 10, 10);
-            matrix[i][0].setColor(Color.RED);
-            matrix[i][0].draw();
-            matrix[i][0].setColor(Color.GREEN);
-            matrix[i][0].fill();
-            isFilled[i][0] = true;
-         } else {
-            matrix[i][0].delete();
-            isFilled[i][0] = false;
+         for (int i = 0; i < 20; i++) {
+
+            if (load.charAt(counter) == '1') {
+
+               matrix[i][j] = new Rectangle((i + 1) * CELLSIZE, (j + 1) * CELLSIZE, 10, 10);
+               matrix[i][j].setColor(Color.RED);
+               matrix[i][j].draw();
+               matrix[i][j].setColor(Color.GREEN);
+               matrix[i][j].fill();
+               isFilled[i][j] = true;
+            } else {
+               matrix[i][j].delete();
+               isFilled[i][j] = false;
+            }
+            counter++;
          }
       }
    }
-
-
-
 }
+
