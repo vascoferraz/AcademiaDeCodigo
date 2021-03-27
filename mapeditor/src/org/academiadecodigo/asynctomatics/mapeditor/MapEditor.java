@@ -229,6 +229,9 @@ public class MapEditor {
                isFilled[i][j] = false;
             }
             counter++;
+            if (counter % 20 == 0) {
+               counter ++;
+            }
          }
       }
    }
