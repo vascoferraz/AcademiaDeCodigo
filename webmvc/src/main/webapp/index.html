@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+
+
+<body>
+
+
+<form action="/helloPost/" method="post">
+
+
+    <div>
+        <label for="name">Name (4 to 8 characters):</label>
+        <input type="text" id="name" name="name" required
+               minlength="4" maxlength="8" size="10">
+    </div>
+
+    <br>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email"
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+               size="30" required>
+    </div>
+
+    <br>
+
+    <div class="form-example">
+        <input type="submit" value="Register">
+    </div>
+
+
+</form>
+
+
+</body>
+</html>
