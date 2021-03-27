@@ -49,7 +49,7 @@
                     <url>http://localhost:8080/manager/text</url>
                     <server>tomcat</server>
                     <username>maven</username>
-                    <password>maven</password>
+                    <password>maven12345</password>
                     <path>/hello</path>
                 </configuration>
             </plugin>

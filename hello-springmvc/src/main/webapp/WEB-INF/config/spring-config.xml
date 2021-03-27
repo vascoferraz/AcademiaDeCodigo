@@ -14,7 +14,7 @@
     </bean>
 
     <bean id="user" class="org.academiadecodigo.asynctomatics.User">
-        <property name="name" value="Vasco"/>
+        <property name="name" value="Vasco Ferraz"/>
         <property name="email" value="vascoferraz@teste.com"/>
     </bean>
 
