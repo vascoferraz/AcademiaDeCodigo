@@ -206,6 +206,8 @@ public class MapEditor {
 
       String load = null;
       int counter = 0;
+      deleteAll();
+
       try {
          load = fileSave.fileLoad("folder/save.txt", StandardCharsets.UTF_8);
       } catch (IOException e) {
@@ -229,7 +231,7 @@ public class MapEditor {
                isFilled[i][j] = false;
             }
             counter++;
-            if (counter % 20 == 0) {
+            if (load.charAt(counter) == '\n') {
                counter ++;
             }
          }
