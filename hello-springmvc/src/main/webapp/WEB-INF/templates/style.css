@@ -32,3 +32,12 @@ body {
     background-color: midnightblue;
     color: white;
 }
+
+ .footer {
+     display: flex;
+     justify-content: space-evenly;
+     width: 100%;
+     text-align: center;
+     background-color: steelblue;
+     color: white;
+}
