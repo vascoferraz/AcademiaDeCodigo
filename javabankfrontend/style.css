@@ -6,6 +6,10 @@ body{
     text-align:center;
     margin: 20px 0px 20px 0px;   
   }
+
+  a {
+    text-decoration: none
+  }
   
   p{
     font-size:16px;
@@ -70,10 +74,10 @@ body{
   .btn{
     background:#ff7c7c; 
     width:125px;
-    padding-top:5px;
-    padding-bottom:5px;
+    padding-top:8px;
+    padding-bottom:8px;
     color:white;
-    border-radius:10px;
+    border-radius:15px;
     border: #ff7c7c 1px solid;
     
     margin-top:20px;
@@ -93,10 +97,10 @@ body{
   #btn2{
     background:#ff7c7c;
     width:125px;
-    padding-top:5px;
-    padding-bottom:5px;
+    padding-top:8px;
+    padding-bottom:8px;
     color:white;
-    border-radius:10px;
+    border-radius:15px;
     border: #ff7c7c 1px solid;
     
     margin-top:20px;
@@ -111,4 +115,9 @@ body{
   #btn2:hover{ 
   background:#ff2424;
   }
+
+  .forgotpassword{ 
+    align-content: flex-end;
+    
+    }
   
