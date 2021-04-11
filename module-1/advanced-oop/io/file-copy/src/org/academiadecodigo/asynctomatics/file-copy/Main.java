@@ -1,4 +1,4 @@
-package org.academiadecodigo.asynctomatics.copy;
+package org.academiadecodigo.asynctomatics.file-copy;
 
 import java.io.IOException;
 

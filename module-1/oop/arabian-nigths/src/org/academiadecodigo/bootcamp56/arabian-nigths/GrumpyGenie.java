@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp56.magiclamp;
+package org.academiadecodigo.bootcamp56.arabian-nigths;
 
 public class GrumpyGenie extends Genie {
 
