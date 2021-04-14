@@ -1,0 +1,16 @@
+{
+  "name": "js-intro",
+  "version": "0.0.1",
+  "description": "Section 02 Introduction to JavaScript Exercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^4.1.0",
+    "sinon": "^4.2.1"
+  }
+}
